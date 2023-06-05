@@ -3,9 +3,10 @@
 // -----------------------------------
 var express = require("express");
 var app = express();
+const port = process.env.PORT || 3000;
 
-app.listen(8000, function (req, res) {
-  console.log("Tripals後端: 8000 啟動中");
+app.listen(port, function (req, res) {
+	console.log("Tripals後端: " + port + " 啟動中");
 });
 
 // -----------------------------------
@@ -29,20 +30,20 @@ const cookieSession = require("cookie-session");
 const session = require("express-session");
 
 app.use(
-  cookieSession({
-    name: "session",
-    keys: ["lama"],
-    maxAge: 10 * 1000, //24*60*60*100
-  })
+	cookieSession({
+		name: "session",
+		keys: ["lama"],
+		maxAge: 10 * 1000, //24*60*60*100
+	})
 );
 
 app.use(
-  session({
-    secret: "my secret key", // 用於加密會話ID的密鑰，可以自行替換
-    resave: false,
-    saveUninitialized: true,
-    maxAge: 5 * 10000,
-  })
+	session({
+		secret: "my secret key", // 用於加密會話ID的密鑰，可以自行替換
+		resave: false,
+		saveUninitialized: true,
+		maxAge: 5 * 10000,
+	})
 );
 
 // -----------------------------------
